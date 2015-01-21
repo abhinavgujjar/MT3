@@ -3,24 +3,39 @@
 	<script type="text/javascript" src="angular.js"></script>
 </head>
 <body ng-controller="mainController">
-	<h1 style="color:blue">{{greeting}}</h1>
+	<h1 style="color:blue">{{greeting}}, {{company.name}}</h1>
+	<input type="text" value="{{company.location}}"/>
 	<hr/>
-	<div ng-controller="subController">
-		<h1 style="color:red">{{greeting}}</h1>
+	<textarea>{{greeting}}</textarea>
+
+	<input type="text" value="{{greeting}}" />
+
+	<div ng-controller="hotelsController">
+		<div ng-repeat="item in hotels">
+			{{item.name}}
+		</div>
 	</div>
-	<div ng-controller="subController">
-		<h1 style="color:red">{{greeting}}</h1>
-	</div>
+	
 	<hr/>
 	<h1 style="color:blue">{{greeting}}</h1>
 	<script>
 	//declaring a module
 	var app = angular.module('myApp', []);
 
-	app.controller('subController', function($scope){
-		$scope.greeting = 'I am SUB . I DO NOT GREET';
-	});
+	app.controller('hotelsController', function($scope){
 
+		var hotels = [
+		{
+			name : 'Leela Palace'
+		},{
+			name : 'Taj'
+		},{
+			name : 'Le Meridian'
+		}];
+
+		$scope.hotels = hotels;
+
+	})
 	//access a module
 	app.controller('mainController', function($scope){
 		var timeOfDay = 'Morning';
@@ -36,7 +51,12 @@
 		if (currentHours > 20){
 			timeOfDay = 'Night';
 		}
-		$scope.greeting = 'confusing' + timeOfDay + ', Mindtree';
+		$scope.greeting = 'Good ' + timeOfDay;
+
+		$scope.company = {
+			name : 'Mindtree',
+			location : 'global village'
+		}
 	})
 
 	</script>
