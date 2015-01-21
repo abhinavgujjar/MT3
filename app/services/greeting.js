@@ -1,11 +1,4 @@
-	//declaring a module
-	var app = angular.module('myApp', []);
-
-
-	//var defaultLimit = 5;
-	app.value('defaultLimit', 5);
-
-	app.factory('greeting', function() {
+app.factory('greeting', function() {
 
 		return {
 			getTimeOfDay: function() {

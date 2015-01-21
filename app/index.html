@@ -6,41 +6,99 @@
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+.highlight {
+    color : red;
+}
 </style>
-<body ng-controller="mainController" ng-cloak class="container">
-    <h1 style="color:blue">{{greeting}}, {{company.name}}</h1>
-    <input type="text" value="{{company.location}}"/>
-    <hr/>
-    <p>
-        Show only
-        <select ng-model="numberOfHotels">
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-        </select>
-        Hotels
-    </p>
-    <p>
-        <input type="checkbox" ng-checked="hotels.length >0" />Has hotels</p>
-    <p>
-        <input type="checkbox" ng-model="showHotels" />
-        Show Hotels
-    </p>
-    <p>
-        <button ng-click="clicker()">Click Me!</button>
-    </p>
-    <div ng-hide="hotels.length >
-        3 && !showHotels">
-        <h2>Hotels</h2>
-        <div class="row" ng-class="{'highlight' : item.price >
-            15000, 'super' : item.price > 20000}" ng-repeat="item in hotels">
-            <div>
-                <img ng-src="images/{{item.img}}" width="200px" />
+<body ng-cloak class="container">
+    <div ng-controller="greetingController">
+        <h1 style="color:blue">{{greeting}}, {{company.name}}</h1>
+        <input type="text" value="{{company.location}}"/>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div ng-controller="hotelsController">
+                <h2>Hotels</h2>
+                <p>
+                    Show only
+                    <select ng-model="numberOfHotels">
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    </select>
+                    Hotels
+                </p>
+
+                <div >
+                        <h2>Filters</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" ng-model="searchTerm"/>
+                            </div>
+                            <div class="col-md-2">
+                                <select ng-model="numberOfHotels" class="form-control">
+                                    <option value="1">1</option>
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select ng-model="orderTerm" class="form-control">
+                                    <option value="name">name</option>
+                                    <option value="price">price</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div>
+                        <div class="row well"  ng-class="{'highlight' : item.price >
+                            15000, 'super' : item.price > 20000}" ng-repeat="item in hotels | filter : searchTerm | limitTo : numberOfHotels | orderBy : orderTerm">
+                            <img class="col-md-2 col-sm-6" ng-src="images/{{item.img}}" width="200px" />
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-6 h4">{{item.name | uppercase}}</div>
+                                    <div class="col-md-6 h4">{{item.price | currency : 'INR'}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">{{item.description}}</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr/>
             </div>
-            <div>{{item.name}}</div>
+        </div>
+        <div class="col-md-4">
+
+            <div ng-controller="addController">
+                <p>
+                    <h2>Add Hotel</h2>
+                    <div class="row">
+                        <div>
+                            <input type="text" ng-model="newHotel.name"/>
+                        </div>
+                        <div >
+                            <input type="number" ng-model="newHotel.price"/>
+                        </div>
+                        <div >
+                            <button ng-click="addHotel(newHotel.name, newHotel.price)">Click Me!</button>
+                        </div>
+                    </div>
+                </p>
+            </div>
         </div>
     </div>
-    <hr/>
+
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="controllers/greetingController.js"></script>
+    <script type="text/javascript" src="controllers/hotelsController.js"></script>
+    <script type="text/javascript" src="controllers/addController.js"></script>
+    <script type="text/javascript" src="services/greeting.js"></script>
+    <script type="text/javascript" src="services/hotelsData.js"></script>
 </body>
 </html>

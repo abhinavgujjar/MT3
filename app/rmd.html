@@ -1,0 +1,45 @@
+<html>
+
+	<script type="text/javascript">
+	// Code goes here
+
+
+
+var greetingFactory = function() {
+    function getTimeOfDay() {
+        var timeOfDay = 'Morning';
+        var currentHours = (new Date()).getHours();
+        if (currentHours >= 11) {
+            timeOfDay = 'Afternoon'
+        }
+
+        if (currentHours > 16) {
+            timeOfDay = 'Evening';
+        }
+
+        if (currentHours > 20) {
+            timeOfDay = 'Night';
+        }
+        return 'Good ' + timeOfDay;
+    }
+
+    function hi() {
+        alert('Hi - ' + getTimeOfDay());
+    }
+
+    function hello() {
+        alert('hello! ' + getTimeOfDay());
+    }
+
+    return {
+        sayHi: hi,
+        sayHello: hello
+    }
+};
+
+var greeting = greetingFactory();
+
+greeting.sayHi();
+greeting.sayHello();
+</script>
+</html>
