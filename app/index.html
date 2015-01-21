@@ -1,18 +1,17 @@
 <html ng-app="myApp" >
 <head>
-	<script type="text/javascript" src="angular.js"></script>
-	
-</head>
-<style type="text/css">
-	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"></head>
+    <style type="text/css">
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 </style>
-<body ng-controller="mainController" ng-cloak>
-	<h1 style="color:blue">{{greeting}}, {{company.name}}</h1>
-	<input type="text" value="{{company.location}}"/>
-	<hr/>
-<p>
+<body ng-controller="mainController" ng-cloak class="container">
+    <h1 style="color:blue">{{greeting}}, {{company.name}}</h1>
+    <input type="text" value="{{company.location}}"/>
+    <hr/>
+    <p>
         Show only
         <select ng-model="numberOfHotels">
             <option value="1">1</option>
@@ -22,24 +21,26 @@
         Hotels
     </p>
     <p>
-        <input type="checkbox" ng-checked="hotels.length > 0" />Has hotels
+        <input type="checkbox" ng-checked="hotels.length >0" />Has hotels</p>
+    <p>
+        <input type="checkbox" ng-model="showHotels" />
+        Show Hotels
     </p>
     <p>
-        <input type="checkbox" ng-model="showHotels" />Show Hotels
+        <button ng-click="clicker()">Click Me!</button>
     </p>
-    <div ng-hide="hotels.length > 3 && !showHotels">
+    <div ng-hide="hotels.length >
+        3 && !showHotels">
         <h2>Hotels</h2>
-        <ul>
-            <li ng-class="{'highlight' : item.price > 15000, 'super' : item.price > 20000}" ng-repeat="item in hotels">
-                <div>
-                    <div>
-                        <img ng-src="http://i.imgur.com/{{item.img}}" width="200px" />
-                    </div>
-                    <div>{{item.name}}</div>
-                </div>
-            </li>
-        </ul>
-    </div>	<hr/>
-	<script type="text/javascript" src="app.js"></script>
+        <div class="row" ng-class="{'highlight' : item.price >
+            15000, 'super' : item.price > 20000}" ng-repeat="item in hotels">
+            <div>
+                <img ng-src="http://i.imgur.com/{{item.img}}" width="200px" />
+            </div>
+            <div>{{item.name}}</div>
+        </div>
+    </div>
+    <hr/>
+    <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
