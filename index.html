@@ -3,13 +3,23 @@
 	<script type="text/javascript" src="angular.js"></script>
 </head>
 <body ng-controller="mainController">
-	<h1>{{greeting}}</h1>
-	<h1>{{11+5}}</h1>
-	<h1 >{{'concat' + 'tenation'}}</h1>
-	<h1 >{{[1,2,3,4][2]}}</h1>
+	<h1 style="color:blue">{{greeting}}</h1>
+	<hr/>
+	<div ng-controller="subController">
+		<h1 style="color:red">{{greeting}}</h1>
+	</div>
+	<div ng-controller="subController">
+		<h1 style="color:red">{{greeting}}</h1>
+	</div>
+	<hr/>
+	<h1 style="color:blue">{{greeting}}</h1>
 	<script>
 	//declaring a module
 	var app = angular.module('myApp', []);
+
+	app.controller('subController', function($scope){
+		$scope.greeting = 'I am SUB . I DO NOT GREET';
+	});
 
 	//access a module
 	app.controller('mainController', function($scope){
