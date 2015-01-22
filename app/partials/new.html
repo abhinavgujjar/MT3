@@ -60,12 +60,13 @@
 	</div>
 
 	<div class="col-md-4">
-		<div ng-repeat='item in newHotel.amenities'>
-			{{item.name}}
+		<div class="row" ng-repeat='item in newHotel.amenities'>
+			<div class="col-md-8">{{item.name}}</div>
+			<div class="col-md-4"><button class="btn btn-sm btn-default">edit</button></div>
 		</div>
-		<div>
-			<input type="text" ng-model="newAmenity" />
-			<button ng-click="addAmenity(newAmenity)">add</button>	
+		<div class="row">
+			<div class="col-md-8"><input type="text" ng-model="newAmenity" /></div>
+			<div class="col-md-4"><button ng-click="addAmenity(newAmenity)">add</button>	</div>
 		</div>
 		
 	</div>
