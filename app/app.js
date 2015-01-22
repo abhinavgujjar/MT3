@@ -1,32 +1,65 @@
 	//declaring a module
 	var app = angular.module('myApp', ['popularity', 'ngRoute']);
 
-	app.filter('toMetres', function(){
-		return function(input){
-			return input * 0.092; 
+	app.filter('toMetres', function() {
+		return function(input) {
+			return input * 0.092;
 		}
 	})
 
 	//var defaultLimit = 5;
 	app.value('defaultLimit', 5);
 
-	app.config(function(votingServiceProvider, $routeProvider){
+	app.directive('carousel', function() {
+
+		return {
+			restrict: 'E',
+			templateUrl: 'partials/carousel.html',
+			scope: {
+				images : '='
+			},
+			controller: function($scope) {
+				$scope.index = 0
+
+				$scope.next = function() {
+					$scope.index++;
+
+					if ($scope.index > $scope.images.length) {
+						$scope.index = 0;
+					}
+				}
+
+				$scope.prev = function() {
+					$scope.index--;
+
+					if ($scope.index < 0) {
+						$scope.index = $scope.images.length;
+					}
+				}
+
+
+			}
+		}
+
+	})
+
+	app.config(function(votingServiceProvider, $routeProvider) {
 
 		$routeProvider.when('/home', {
-			templateUrl : 'partials/home.html'
+			templateUrl: 'partials/home.html'
 		});
 
 		$routeProvider.when('/list', {
-			templateUrl : 'partials/listing.html'
+			templateUrl: 'partials/listing.html'
 		});
 
 		$routeProvider.when('/new', {
-			templateUrl : 'partials/new.html',
-			controller : 'addController'
+			templateUrl: 'partials/new.html',
+			controller: 'addController'
 		});
 
-		$routeProvider.otherwise( {
-			redirectTo : '/home'
+		$routeProvider.otherwise({
+			redirectTo: '/home'
 		});
 
 		votingServiceProvider.setInterval(14);

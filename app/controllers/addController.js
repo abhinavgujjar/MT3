@@ -1,7 +1,10 @@
 	app.controller('addController', function($scope, hotelsData) {
 
+		$scope.newHotel = {
+			amenities : []
+		}
 
-		var images = ["goldenpalms.jpg"
+		$scope.images = ["goldenpalms.jpg",
 			"clarks-exotica-resort.jpg",
 			"the-elanza-hotel.jpg",
 			"ramada.jpg",
@@ -9,7 +12,11 @@
 			"oberoi.jpg",
 			"trinity-suites.jpg"
 		];
-
+		$scope.addAmenity = function(item){
+			$scope.newHotel.amenities.push({
+				name : item
+			});
+		}
 		$scope.addHotel = function(newHotel) {
 
 			if ($scope.hotelsForm.$invalid) {
