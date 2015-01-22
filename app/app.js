@@ -1,6 +1,11 @@
 	//declaring a module
 	var app = angular.module('myApp', []);
 
+	app.filter('toMetres', function(){
+		return function(input){
+			return input * 0.092; 
+		}
+	})
 
 	//var defaultLimit = 5;
 	app.value('defaultLimit', 5);

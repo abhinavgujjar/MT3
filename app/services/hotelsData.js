@@ -1,4 +1,4 @@
-app.factory('hotelsData', function() {
+angular.module('myApp').factory('hotelsData', function() {
 
 	var hotels = [{
 			"id": "1",

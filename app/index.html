@@ -12,59 +12,50 @@
 </style>
 <body ng-cloak class="container">
     <div ng-controller="greetingController">
-        <h1 style="color:blue">{{greeting}}, {{company.name}}</h1>
-        <input type="text" value="{{company.location}}"/>
+        <h1 style="color:blue">{{greeting}}, {{company.name}} - {{company.location}}</h1>
         <hr/>
     </div>
     <div class="row">
         <div class="col-md-8">
             <div ng-controller="hotelsController">
-                <h2>Hotels</h2>
-                <p>
-                    Show only
-                    <select ng-model="numberOfHotels">
-                        <option value="1">1</option>
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                    </select>
-                    Hotels
-                </p>
 
                 <div >
-                        <h2>Filters</h2>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" ng-model="searchTerm"/>
-                            </div>
-                            <div class="col-md-2">
-                                <select ng-model="numberOfHotels" class="form-control">
-                                    <option value="1">1</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                    <option value="50">50</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <select ng-model="orderTerm" class="form-control">
-                                    <option value="name">name</option>
-                                    <option value="price">price</option>
-                                </select>
-                            </div>
+                    <h4>Filters</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="searchTerm"/>
                         </div>
+                        <div class="col-md-2">
+                            <select ng-model="numberOfHotels" class="form-control">
+                                <option value="1">1</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select ng-model="orderTerm" class="form-control">
+                                <option value="name">name</option>
+                                <option value="price">price</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div>
                         <div class="row well"  ng-class="{'highlight' : item.price >
                             15000, 'super' : item.price > 20000}" ng-repeat="item in hotels | filter : searchTerm | limitTo : numberOfHotels | orderBy : orderTerm">
-                            <img class="col-md-2 col-sm-6" ng-src="images/{{item.img}}" width="200px" />
+                            <img class="col-md-2" ng-src="images/{{item.img}}" width="200px" />
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-md-6 h4">{{item.name | uppercase}}</div>
-                                    <div class="col-md-6 h4">{{item.price | currency : 'INR'}}</div>
+                                    <div class="col-md-6">
+                                        <div class="h4">{{item.price | currency : 'INR'}}</div>
+                                        <div>{{item.area | toMetres | number : 2 }}</div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">{{item.description}}</div>
                                 </div>
-
                             </div>
 
                         </div>
@@ -73,7 +64,7 @@
                 <hr/>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3 col-md-offset-1">
 
             <div ng-controller="addController">
                 <p>
