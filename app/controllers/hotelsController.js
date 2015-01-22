@@ -7,9 +7,11 @@ app.controller('hotelsController', function($scope, defaultLimit, hotelsData, vo
 
 	$scope.numberOfHotels = defaultLimit;
 
-	hotelsData.getHotels(function(hotels){
+	var promise = hotelsData.getHotels();
+
+	promise.then(function(hotels){
 		$scope.hotels = hotels;
-	});
+	})
 
 
 	$scope.vs = votingService;
