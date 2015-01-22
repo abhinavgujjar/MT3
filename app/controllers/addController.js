@@ -1,4 +1,4 @@
-	app.controller('addController', function($scope, hotelsData) {
+	app.controller('addController', function($scope, hotelsData, $location) {
 
 		$scope.newHotel = {
 			amenities : []
@@ -12,10 +12,18 @@
 			"oberoi.jpg",
 			"trinity-suites.jpg"
 		];
+
+		$scope.toggleEdit = function(item){
+			item.editing = !item.editing;
+		}
+
+
 		$scope.addAmenity = function(item){
 			$scope.newHotel.amenities.push({
 				name : item
 			});
+
+			$scope.newAmenity = '';
 		}
 		$scope.addHotel = function(newHotel) {
 
@@ -24,6 +32,7 @@
 			} else {
 
 				hotelsData.addHotel(newHotel);
+				$location.url('list');
 			}
 		}
 

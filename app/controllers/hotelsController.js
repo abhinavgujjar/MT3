@@ -1,5 +1,5 @@
 //access a module
-app.controller('hotelsController', function($scope, defaultLimit, hotelsData, votingService) {
+app.controller('hotelsController', function($scope, defaultLimit, hotelsData, votingService, $http) {
 	$scope.city = 'Bangalore';
 	$scope.state = 'Karnataka';
 
@@ -7,7 +7,10 @@ app.controller('hotelsController', function($scope, defaultLimit, hotelsData, vo
 
 	$scope.numberOfHotels = defaultLimit;
 
-	$scope.hotels = hotelsData.getHotels();
+	hotelsData.getHotels(function(hotels){
+		$scope.hotels = hotels;
+	});
+
 
 	$scope.vs = votingService;
 

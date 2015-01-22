@@ -26,7 +26,7 @@
 
                     <div>
                         <div class="row well"  ng-class="{'highlight' : item.price >
-                            15000, 'super' : item.price > 20000}" ng-repeat="item in hotels | cityOrCountry :  searchTerm | limitTo : numberOfHotels | orderBy : orderTerm">
+                            15000, 'super' : item.price > 20000}" ng-repeat="item in hotels | filter :  searchTerm | limitTo : numberOfHotels | orderBy : orderTerm">
 
                             <div class="col-md-2">
                                 <div><button ng-click="vs.upVote(item)" class="btn btn-sm btn-default">up</button></div>
