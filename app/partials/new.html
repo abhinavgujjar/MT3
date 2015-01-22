@@ -1,27 +1,62 @@
 <div>
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-			<div class="col-sm-10">
-				<input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div>
-		</div>
-		<div class="form-group">
-			<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-			<div class="col-sm-10">
-				<input type="password" class="form-control" id="inputPassword3" placeholder="Password"></div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox">Remember me</label>
+	<style type="text/css">
+	input.ng-invalid.ng-dirty {
+		background-color: pink;
+	}
+
+	input.ng-invalid.ng-pristine {
+		border-color: pink;
+		border-width: 2px
+	}
+</style>
+	<div class="col-md-6 col-md-offset-1" >
+		<div>
+			<form class="form-horizontal" name="hotelsForm">
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-10">
+						<input type="text" name="vName" class="form-control" required  ng-model="newHotel.name" maxLength="30"  placeholder="Name"></div>
+					<div ng-show="hotelsForm.vName.$invalid" class="row">
+						<div class="col-sm-10 col-sm-offset-3">Name is required</div>
+					</div>
 				</div>
-			</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">Price</label>
+					<div class="col-sm-10">
+						<input type="number" min="2000" max="50000" ng-model="newHotel.price" class="form-control"  placeholder="Price"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Location</label>
+					<div class="col-sm-10">
+						<input type="text" ng-pattern="/" class="form-control"  placeholder="Location"></div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">IP Address</label>
+					<div ng-class="{'col-sm-10' : hotelsForm.vIP.$invalid, 'col-sm-9' : hotelsForm.vIP.$valid}">
+						<input type="text" ng-pattern="/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/" required name="vIP" ng-model="newHotel.ip" class="form-control"  placeholder="Location">
+					</div>
+					<div ng-show="hotelsForm.vIP.$valid" class="col-sm-1 text-success"><span class="glyphicon glyphicon-ok"></span></div>
+
+					<div ng-show="hotelsForm.vIP.$invalid" class="row">
+						<div class="col-sm-10 col-sm-offset-3">{{hotelsForm.vIP.$viewValue}} is not valid</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">Description</label>
+					<div class="col-sm-10">
+						<textarea class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button ng-disabled="hotelsForm.$invalid" class="btn btn-success" ng-click="addHotel(newHotel)">Create</button>
+					</div>
+				</div>
+			</form>
 		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Sign in</button>
-			</div>
-		</div>
-	</form>
+	</div>
+
+	<div class="col-md-4">
+	</div>
+
 </div>

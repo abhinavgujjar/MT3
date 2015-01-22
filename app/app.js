@@ -21,7 +21,8 @@
 		});
 
 		$routeProvider.when('/new', {
-			templateUrl : 'partials/new.html'
+			templateUrl : 'partials/new.html',
+			controller : 'addController'
 		});
 
 		$routeProvider.otherwise( {
