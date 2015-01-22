@@ -11,9 +11,13 @@ angular.module('popularity')
 		this.$get = function() {
 			return {
 				upVote: function(hotel) {
+					hotel.rating = hotel.rating || 0;
+
 					hotel.rating = hotel.rating + interval;
 				},
 				downVote: function(hotel) {
+
+					hotel.rating = hotel.rating || 0;
 
 					if (hotel.rating > 0) {
 						hotel.rating = hotel.rating - interval;

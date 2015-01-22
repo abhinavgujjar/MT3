@@ -1,4 +1,4 @@
-<html ng-app="myApp" >
+<html ng-app="flights" >
 <head>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
@@ -23,26 +23,19 @@
             <li role="presentation">
                 <a href="#/new">New</a>
             </li>
-            <li role="presentation">
-                <a href="flightsIndex.html">Flights</a>
+            <li role="hotels">
+                <a href="index.html">Hotels</a>
             </li>
         </ul>
     </div>
 
-    <div ng-controller="greetingController">
-        <h1 style="color:blue">{{greeting}}, {{company.name}} - {{company.location}}</h1>
-        <hr/>
-    </div>
+  
     <div>
         <ng-view></ng-view>
     </div>
 
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="flightapp.js"></script>
     <script type="text/javascript" src="services/votingService.js"></script>
-    <script type="text/javascript" src="controllers/greetingController.js"></script>
-    <script type="text/javascript" src="controllers/hotelsController.js"></script>
-    <script type="text/javascript" src="controllers/addController.js"></script>
-    <script type="text/javascript" src="services/greeting.js"></script>
-    <script type="text/javascript" src="services/hotelsData.js"></script>
+
 </body>
 </html>

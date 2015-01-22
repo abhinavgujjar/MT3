@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-9">
+        <div ng-controller="flightsController">
+
+            <div>
+                <div class="row well" ng-repeat="item in flights">
+                    <div class="col-md-2">
+                        <div>
+                            <button ng-click="vs.upVote(item)" class="btn btn-sm btn-default">up</button>
+                        </div>
+                        <div>{{item.rating}}</div>
+                        <div>
+                            <button ng-click="vs.downVote(item)" class="btn btn-sm btn-default">down</button>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">{{item.name}}</div>
+                    <div class="col-md-3">{{item.arr}}</div>
+                    <div class="col-md-3">{{item.dep}}</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
