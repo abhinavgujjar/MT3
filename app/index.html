@@ -53,8 +53,15 @@
                                         <div>{{item.area | toMetres | number : 2 }}</div>
                                     </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="col-md-12">{{item.description}}</div>
+                                    <div class="col-md-12">
+                                    <span ng-hide="item.showMore">{{item.description | limitTo : 200}}</span>
+                                    <span ng-show="item.showMore">{{item.description}}</span>
+                                    <span ng-hide="item.description.length < 200">
+
+                                    <a href='' ng-hide="item.showMore" ng-click="showMore(item)">... more</a></span>
+                                    </div>
                                 </div>
                             </div>
 

@@ -8,5 +8,9 @@ app.controller('hotelsController', function($scope, defaultLimit, hotelsData) {
 	$scope.numberOfHotels = defaultLimit;
 
 	$scope.hotels = hotelsData.getHotels();
+
+	$scope.showMore = function(item){
+		item.showMore = true;	
+	}
 		
 });
