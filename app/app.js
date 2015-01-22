@@ -1,5 +1,5 @@
 	//declaring a module
-	var app = angular.module('myApp', ['popularity']);
+	var app = angular.module('myApp', ['popularity', 'ngRoute']);
 
 	app.filter('toMetres', function(){
 		return function(input){
@@ -10,7 +10,15 @@
 	//var defaultLimit = 5;
 	app.value('defaultLimit', 5);
 
-	app.config(function(votingServiceProvider){
+	app.config(function(votingServiceProvider, $routeProvider){
+
+		$routeProvider.when('/home', {
+			templateUrl : 'partials/home.html'
+		});
+
+		$routeProvider.when('/list', {
+			templateUrl : 'partials/listing.html'
+		});
 
 		votingServiceProvider.setInterval(14);
 
