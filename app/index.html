@@ -16,7 +16,7 @@
         <hr/>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div ng-controller="hotelsController">
 
                 <div >
@@ -44,8 +44,15 @@
                     <div>
                         <div class="row well"  ng-class="{'highlight' : item.price >
                             15000, 'super' : item.price > 20000}" ng-repeat="item in hotels | filter : searchTerm | limitTo : numberOfHotels | orderBy : orderTerm">
+
+                            <div class="col-md-2">
+                                <div><button ng-click="vs.upVote(item)" class="btn btn-sm btn-default">up</button></div>
+                                <div>{{item.rating}}</div>
+                                <div><button ng-click="vs.downVote(item)" class="btn btn-sm btn-default">down</button></div>
+
+                            </div>
                             <img class="col-md-2" ng-src="images/{{item.img}}" width="200px" />
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-md-6 h4">{{item.name | uppercase}}</div>
                                     <div class="col-md-6">
@@ -71,7 +78,7 @@
                 <hr/>
             </div>
         </div>
-        <div class="col-md-3 col-md-offset-1">
+        <div class="col-md-2 col-md-offset-1">
 
             <div ng-controller="addController">
                 <p>
@@ -93,6 +100,7 @@
     </div>
 
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="services/votingService.js"></script>
     <script type="text/javascript" src="controllers/greetingController.js"></script>
     <script type="text/javascript" src="controllers/hotelsController.js"></script>
     <script type="text/javascript" src="controllers/addController.js"></script>
