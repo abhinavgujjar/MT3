@@ -7,6 +7,25 @@
 		}
 	})
 
+	app.filter('cityOrCountry', function() {
+		return function(input, searchTerm) {
+
+			if ( !searchTerm ){
+				return input;
+			}
+			var matching = [];
+
+			for (var i = 0; i < input.length; i++){
+				if  (( input[i].name.indexOf(searchTerm) > 0 ) || 
+					( input[i].location.indexOf(searchTerm) > 0 ))
+				{
+					matching.push(input[i]);
+				}
+			}
+			return matching;
+		}
+	})
+
 	//var defaultLimit = 5;
 	app.value('defaultLimit', 5);
 
