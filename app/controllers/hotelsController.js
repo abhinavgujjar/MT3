@@ -1,5 +1,5 @@
 //access a module
-app.controller('hotelsController', function($scope, defaultLimit, hotelsData, votingService, $http) {
+app.controller('hotelsController', function($scope, defaultLimit, hotelsData, votingService, $location) {
 	$scope.city = 'Bangalore';
 	$scope.state = 'Karnataka';
 
@@ -12,6 +12,14 @@ app.controller('hotelsController', function($scope, defaultLimit, hotelsData, vo
 	promise.then(function(hotels){
 		$scope.hotels = hotels;
 	})
+
+	$scope.selectHotel = function(hotel){
+
+		hotelsData.selectedHotel = hotel;
+//		hotelsData.setSelectedHotelId(id);
+
+		$location.url('/details');
+	}
 
 
 	$scope.vs = votingService;

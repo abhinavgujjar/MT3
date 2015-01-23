@@ -1,0 +1,41 @@
+<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-2">
+		<div>
+			<button ng-click="vs.upVote(item)" class="btn btn-sm btn-default">up</button>
+		</div>
+		<div>{{item.rating}}</div>
+		<div>
+			<button ng-click="vs.downVote(item)" class="btn btn-sm btn-default">down</button>
+		</div>
+
+	</div>
+	<img class="col-md-2" ng-src="images/{{item.img}}" width="200px" />
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-6">
+				<div>
+					<h4>
+						<a href='' ng-click='selectHotel(item.objectId)'>{{item.name | uppercase}}</h4>
+					</div>
+					<div class="text-small">{{item.location | uppercase}}</div>
+
+				</div>
+				<div class="col-md-6">
+					<div class="h4">{{item.price | currency : 'INR'}}</div>
+					<div>{{item.area | toMetres | number : 2 }}</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span ng-hide="item.showMore">{{item.description | limitTo : 200}}</span>
+					<span ng-show="item.showMore">{{item.description}}</span>
+					<span ng-hide="item.description.length < 200">
+
+						<a href='' ng-hide="item.showMore" ng-click="showMore(item)">... more</a>
+					</span>
+				</div>
+			</div>
+		</div>
+
+	</div>

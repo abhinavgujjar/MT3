@@ -83,6 +83,11 @@
 			controller: 'addController'
 		});
 
+		$routeProvider.when('/details', {
+			templateUrl: 'partials/details.html',
+			controller: 'detailsController'
+		});
+
 		$routeProvider.otherwise({
 			redirectTo: '/home'
 		});
