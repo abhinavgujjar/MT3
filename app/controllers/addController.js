@@ -1,7 +1,8 @@
 	app.controller('addController', function($scope, hotelsData, $location) {
 
 		$scope.newHotel = {
-			amenities : []
+			amenities : [],
+			img : ''
 		}
 
 		$scope.images = ["goldenpalms.jpg",

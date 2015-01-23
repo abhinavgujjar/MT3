@@ -35,10 +35,12 @@
 			restrict: 'E',
 			templateUrl: 'partials/carousel.html',
 			scope: {
-				images : '='
+				images : '=',
+				selectedImage : '='
 			},
 			controller: function($scope) {
 				$scope.index = 0
+				$scope.selectedImage = $scope.images[$scope.index];
 
 				$scope.next = function() {
 					$scope.index++;
@@ -46,6 +48,8 @@
 					if ($scope.index > $scope.images.length) {
 						$scope.index = 0;
 					}
+
+					$scope.selectedImage = $scope.images[$scope.index];
 				}
 
 				$scope.prev = function() {
@@ -54,6 +58,8 @@
 					if ($scope.index < 0) {
 						$scope.index = $scope.images.length;
 					}
+
+					$scope.selectedImage = $scope.images[$scope.index];
 				}
 
 
