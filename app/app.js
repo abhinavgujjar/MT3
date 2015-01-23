@@ -83,7 +83,7 @@
 			controller: 'addController'
 		});
 
-		$routeProvider.when('/details', {
+		$routeProvider.when('/details/:hotelId', {
 			templateUrl: 'partials/details.html',
 			controller: 'detailsController'
 		});
