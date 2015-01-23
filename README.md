@@ -12,3 +12,5 @@ angular extension for chrome - https://chrome.google.com/webstore/detail/ng-insp
 $q library example - http://plnkr.co/edit/AXkS97?p=preview
 
 custom directive 1 - http://plnkr.co/edit/JxDNal?p=preview
+
+participant list - https://docs.google.com/spreadsheets/d/1QevA6LJdwrqj56h62sTR3QCecaddTkFS0Z5Do1dwaWo/edit?usp=sharing
